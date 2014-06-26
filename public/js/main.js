@@ -1,4 +1,46 @@
-var app = angular.module('picanoo', ['justifydiv']);
+var app = angular.module('picanoo', ['justifydiv', 'ui.router']);
+
+app.config(function($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+    .state('new', {
+        url: "/",
+        templateUrl: "template/new",
+        controller: function($scope, $state, $http) {
+            $scope.create = function(title) {
+                console.log(title);
+
+                $http.get('/new', {params: {title: title}}).
+                success(function(data, status, headers, config) {
+                    console.log(data);
+                    $state.transitionTo('album', {albumId: data._id, title: data.title});
+                }).
+                error(function(data, status, headers, config) {
+
+                });
+
+            }
+        }
+    })
+    .state('album', {
+        url: "/album/:albumId/:title",
+        templateUrl: "template/album",
+        controller: function($scope, $state, $stateParams, $http) {
+
+            $http.get('/get', {params: {id: $stateParams.albumId, title: $stateParams.title}}).
+            success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.album = data;
+            }).
+            error(function(data, status, headers, config) {
+                $state.transitionTo('new');
+            });
+        }
+    });
+
+    $urlRouterProvider.otherwise("/");
+
+});
 
 app.controller("AppCtrl", ['$scope', function($scope) {
     $scope.medias = [];

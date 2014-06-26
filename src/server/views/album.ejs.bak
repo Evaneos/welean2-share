@@ -1,0 +1,10 @@
+<div class="row text-center" p-dropzone thumbnail="thumbnail(file, dataUrl)" added="added(file)" files="medias" progress='progress'>
+    <div ng-if="medias.length == 0">
+        <% include parts/home.ejs %>
+    </div>
+    <div class="warning center-block" ng-if="error==false"></div>
+    <div id="mygallery"  ng-justify-div p-slideshow>
+        <div p-media ng-repeat="media in medias" media="media">
+        </div>
+    </div>
+</div>

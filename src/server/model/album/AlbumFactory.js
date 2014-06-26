@@ -7,11 +7,11 @@ module.exports = function(db) {
 }
 
 module.exports.prototype = {
-	create : function() {
+	create : function(title) {
 
 		return new Promise(function(resolve, reject) {
 
-			this.db.collection('albumcollection').insert({}, function(err, result) {
+			this.db.collection('albumcollection').insert({title: title}, function(err, result) {
 
 				if (err) {
 					return reject(err);

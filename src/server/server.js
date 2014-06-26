@@ -72,12 +72,21 @@ app.use(function(req,res,next){
 /***********
 * ROUTES
 ************/
+/*
 app.get('/:uuid/', require(config.serverDir + '/controllers/albumController.js'));
-app.get('/', require(config.serverDir + '/controllers/indexController.js'));
+app.get('/', require(config.serverDir + '/controllers/albumController.js'));
 app.post('/:uuid/upload/', require(config.serverDir + '/controllers/uploadController.js'));
 //app.get('/:uuid/delete/', require(config.serverDir + '/controllers/deleteAlbumController.js'));
 app.get('/:auid/delete/:iuid/', require(config.serverDir + '/controllers/deleteImageController.js'));
-
+*/
+app.get('/template/:templatename', function(req, res) {
+    res.render(req.param('templatename') + '.ejs');
+});
+app.get('/new', require(config.serverDir + '/controllers/newController.js'));
+app.get('/get', require(config.serverDir + '/controllers/getController.js'));
+app.get('/*', function(req, res) {
+    res.render('app.ejs');
+});
 
 /***********
 * GOOOO

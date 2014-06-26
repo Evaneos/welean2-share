@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<% include parts/head.ejs %>
+<body ng-app="picanoo" ng-controller="AppCtrl as app">
+    <div class='notifications top-right'></div>
+    <!-- <% include parts/topbar.ejs %> -->
+    <div ui-view></div>
+
+    </body>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/dropzone/downloads/dropzone.js"></script>
+    <!-- <script type="text/javascript" src="vendors/linear-partition/dist/linear_partition.js"></script> -->
+    <script type="text/javascript" src="/bower_components/underscore/underscore.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/pDropzone.js"></script>
+<script src="/bower_components/dropzone-rowgrid-angular/public/js/linearpartition.js"></script>
+<script src="/bower_components/dropzone-rowgrid-angular/public/js/justifydiv.js"></script>
+<script src="/bower_components/fancybox/source/jquery.fancybox.js"></script>
+<!--    <script type="text/javascript" src="js/linearpartition.js"></script>-->
+</html>
