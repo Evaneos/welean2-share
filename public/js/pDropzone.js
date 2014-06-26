@@ -20,7 +20,7 @@ app.directive('pDropzone', function() {
                 url: './upload/',
                 thumbnailHeight: 300,
                 thumbnailWidth: null,
-                autoQueue: false,
+                //autoQueue: false,
                 init: function() {
 
                     this.files = scope.files;
@@ -49,7 +49,7 @@ app.directive('pDropzone', function() {
                     console.log('added file:');
                     console.log(file);
                     var extensionId = "boknicagoipdeompcgnhjdalnbenclik";
-                    chrome.runtime.sendMessage(extensionId, { message: "version" },
+                    chrome.runtime.sendMessage(extensionId, { file: file },
                         function (reply) {
 
                                 alert(reply);

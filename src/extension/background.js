@@ -14,7 +14,22 @@ chrome.browserAction.onClicked.addListener(function(activeTab)
 });
 
 
-chrome.runtime.onMessageExternal.addListener(
-  function(request, sender, sendResponse) {
-    sendResponse('hello');
-  });
+Dropzone.autoDiscover = false;
+
+$( document ).ready(function() {
+
+    var dropzone = new Dropzone('.dropzone', {
+        url: 'http://share:1337/upload/',
+        createImageThumbnails: false
+    });
+
+
+
+    chrome.runtime.onMessageExternal.addListener(
+      function(request, sender, sendResponse) {
+        console.log(request.file);
+        dropzone.addFile(request.file);
+      }
+    );
+});
+

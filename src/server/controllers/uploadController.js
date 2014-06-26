@@ -4,6 +4,8 @@ var AlbumFactory = require(config.serverDir + '/model/album/AlbumFactory');
 
 module.exports = function(req, res) {
 
+    console.log('upload');
+
     var form = new multiparty.Form({
         uploadDir: './tmp'
     });
